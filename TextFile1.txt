@@ -1,0 +1,115 @@
+Polymorphism
+->soyutlamanýn en temel olayý
+->inherit edilen veya implement edilen sýnýf referan tutuyor dolayýýsyla o referanslarý biz switch edebiliyor deðiþtirebiliyorduk.
+->inherit edilen veya implement edilen nesne üzerinden ýmevzuat gibi farklý biçimdeki implementasyonlarý veya inheritýnslarý kullanma yöntemidir.
+
+class customermanager
+{
+    private IMevzuat _mevzuat;
+
+    public customermanager(IMevzuat mevzuat)->hangi mevzuatla çalýþacaðýný istiyor o da ýmevzuat
+        {
+          _mevzuat=mevzuat;
+        }
+        IMevzuat hem 1,2,3 mevzuatýn implementasyonu
+        polymorphism çok biçimlilik demek zaten dolayýsýyle cutommanager çok biçimli bir þekilde çalýllmasýný saðlýyorum hem 1 mevzuat hem 2 hem 3 olabilir.
+
+    public void Add()
+    {
+    _mevzuat.islemyap();
+     }
+}
+
+interface IMevzuat
+  {
+   void IslemYap();
+   }
+
+class BirinciMevzuat:IMevzuat
+{ 
+       public void IslemYap()
+        {
+        console.writleine("Birinci Mevzuat");
+         }
+ }
+
+class 2Mevzuat;IMevzuat
+{ 
+         public void IslemYap()
+        {
+        console.writleine("2 Mevzuat");
+        }
+}
+class 3Mevzuat;IMevzuat
+{ 
+         public void IslemYap()
+        {
+        console.writleine("3 Mevzuat");
+        }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+
+// Arayüz (Interface) - ISekil
+interface ISekil
+{
+    void Ciz();
+}
+
+// Dikdörtgen sýnýfý ISekil arayüzünü uygular
+class Dikdortgen : ISekil
+{
+    public void Ciz()
+    {
+        Console.WriteLine("Dikdörtgen çiziliyor.");
+    }
+}
+
+// Daire sýnýfý ISekil arayüzünü uygular
+class Daire : ISekil
+{
+    public void Ciz()
+    {
+        Console.WriteLine("Daire çiziliyor.");
+    }
+}
+
+// ÞekilYoneticisi (ShapeManager) sýnýfý
+class SekilYoneticisi
+{
+    private readonly ISekil _sekil;
+
+    public SekilYoneticisi( ISekil sekil)
+    {
+        _sekil = sekil
+    }
+
+  
+
+    public void SekilleriCiz()
+    {
+       
+            _sekil.Ciz();
+        
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // ÞekilYoneticisi nesnesini parametre olarak ISekýl yaný new Dikdortgen(),yada new Daire() alýr
+
+        SekilYoneticisi sekilYoneticisi = new SekilYoneticisi(new Dikdortgen());
+
+        ne gönderirsek ona göre çalýþacaktýr.yani bizim  Þekilyöneticimiz poliformik çok biçimli bir sistemi destekliyor.
+
+        en temel teknik cevap->interfacelerin vaya base classlarýn implemente edildikleri veya inherit edildikleri sýnýfýn referansýný tutma özelliðinden dolayý o interface üzerinden farklý implementasyonlara geçebiliyoruz buda bizim için poliformik yani çok biçimli bir ortam sunuyor 
+
+    }
+}
+

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Intro.Entities
 {
-    public class Course
+    //class olmasının sebebi birden fazla özelliği içinde barındırıyor olması birtanesi
+    public class Course//özellik tutucu sınıf
     {
         //Prop tanımlarken PascalCase kullanıyoruz.
         public int Id { get; set; }
